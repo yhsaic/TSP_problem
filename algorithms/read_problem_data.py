@@ -10,7 +10,7 @@ def read_problem_data(path, encoding):
 
     with open(path, encoding=encoding) as f:
         load_dict = json.load(f)
-        print("load_dict", load_dict)
+        # print("load_dict", load_dict)
 
         try:
             # check whether the .txt has all the problem data or not
@@ -33,6 +33,8 @@ def read_problem_data(path, encoding):
                 d["carrierId"] = data[i]["carrierId"]
                 d["address"] = data[i]["address"]
                 d["transportTime"] = data[i]["transportTime"]
+                if "lnglat" in data[i]:
+                    d["lnglat"] = data[i]["lnglat"]
 
                 chosen_data.append(d)
 
@@ -49,12 +51,12 @@ def read_problem_data(path, encoding):
 
 
 # if __name__ == '__main__':
-ori_data_path = "./database/2020-11-07上午_data.txt"
-encoding = "GBK"
-problem_data = read_problem_data(ori_data_path, encoding)
-print("read data: ", problem_data.data)
-
-d = os.path.dirname(__file__)
-
-write_path = d + "/database/2020-11-07上午_data_new.txt"
-write_problem_data(problem_data, write_path, encoding)
+# ori_data_path = "./database/2020-11-07上午_data.txt"
+# encoding = "GBK"
+# problem_data = read_problem_data(ori_data_path, encoding)
+# print("read data: ", problem_data.data)
+#
+# d = os.path.dirname(__file__)
+#
+# write_path = d + "/database/2020-11-07上午_data_new.txt"
+# write_problem_data(problem_data, write_path, encoding)
